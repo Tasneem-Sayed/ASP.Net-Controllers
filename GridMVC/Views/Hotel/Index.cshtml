@@ -1,0 +1,90 @@
+﻿
+@model IQueryable<GridMVC.Models.RoomVM>
+
+<html>
+<head>
+
+    <script src="~/lib/jquery/jquery.js"></script>
+    <script src="~/lib/jqueryui/jquery-ui.js"></script>
+
+    <link href="~/lib/jqueryui/themes/flick/jquery-ui.css" rel="stylesheet" />
+    <link href="~/lib/jqueryui/themes/flick/theme.css" rel="stylesheet" />
+    <script src="~/jtable.2.4.0/jtable.2.4.0/jquery.jtable.js"></script>
+    <link href="~/jtable.2.4.0/jtable.2.4.0/themes/metro/pink/jtable.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div id="PersonTableContainer">
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#PersonTableContainer').jtable({
+                    title: 'Table of Rooms',
+                   
+                    actions: {
+                        listAction: '/Hotel/PersonList',
+                        createAction: '/Hotel/CreatePerson',
+                        updateAction: '/Hotel/UpdatePerson',
+                        deleteAction: '/Hotel/DeletePerson'
+                    },
+                    fields: {
+                        RoomId: {
+                            key: true,
+                            list: false
+                        },
+                        RoomNo: {
+                            title: 'Room Number ',
+                            width: '5%',
+                        },
+                        RoomImg: {
+                            title: 'Room Image',
+                            width: '20%',
+                           /* type:'Image'*/
+                        },
+                        RoomPrice: {
+                            title: 'Room Price',
+                            width: '5%',
+                        
+                        },
+                         BookingStatusId: {
+                             title: 'Room Status',
+                             width: '10%',
+                             type: 'radiobutton',
+                             options: { '1': 'Reserved', '2': 'Free', '3': 'Occupied'}
+                        },
+                        RoomTypeId: {
+                            title: 'Room Type',
+                            width: '20%',
+                            type: 'radiobutton',
+                            options: { '1': 'Single', '2': 'Double', '3': 'Suite', '4':'Duplex' }
+                        },
+                        RoomDesc: {
+                            title: 'Description',
+                            width: '20%'
+                        },
+                        RoomCapicty: {
+                            title: 'Room Capicty',
+                            width: '5%'
+                        },
+                        IsActive: {
+                            title: 'Is Availabe',
+                            width: '10%',
+                           
+                            type: 'checkbox',
+                            values: { 'false': 'Not Available', 'true': 'Avilable' },
+                            defaultValue: 'true'
+                        },
+                        BookingId: {
+                            title: 'Guest Name',
+                            width: '10%',
+
+                        }
+                        
+                    }
+                });
+                $('#PersonTableContainer').jtable('load');
+            });
+        </script>
+
+    </div>
+</body>
+</html>

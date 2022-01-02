@@ -1,0 +1,84 @@
+﻿@model IQueryable<GridMVC.Models.BookingVM>
+
+<html>
+<head>
+
+    <script src="~/lib/jquery/jquery.js"></script>
+    <script src="~/lib/jqueryui/jquery-ui.js"></script>
+
+    <link href="~/lib/jqueryui/themes/flick/jquery-ui.css" rel="stylesheet" />
+    <link href="~/lib/jqueryui/themes/flick/theme.css" rel="stylesheet" />
+    <script src="~/jtable.2.4.0/jtable.2.4.0/jquery.jtable.js"></script>
+    <link href="~/jtable.2.4.0/jtable.2.4.0/themes/metro/pink/jtable.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div id="PersonRoomContainer">
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#PersonRoomContainer').jtable({
+                    title: 'Table of Rooms',
+
+                    actions: {
+                        listAction: '/Booking/PersonList',
+                        createAction: '/Booking/CreatePerson',
+                        updateAction: '/Booking/UpdatePerson',
+                        deleteAction: '/Booking/DeletePerson'
+                    },
+                    fields: {
+                        BookingId: {
+                            key: true,
+                            list: false
+                        },
+                        GuestName: {
+                            title: 'Guest Name ',
+                            width: '10%',
+                        },
+                        BookingFrom: {
+                            title: 'BookingFrom ',
+                            width: '10%',
+                            type: 'date',
+                            create: false,
+                            edit: false
+                        },
+                        BookingTo: {
+                            title: 'BookingTo',
+                            width: '10%',
+                            type: 'date',
+                            create: false,
+                            edit: false
+                        },
+                        AssignRoomId: {
+                             title: 'Room Type',
+                             width: '10%',
+                            type: 'dropdown',
+                            options: { '1': 'Single', '2': 'Double', '3': 'Suite', '4': 'Duplex' }
+                        },
+                        RoomNum: {
+                            title: 'Room Number',
+                            width: '5%',
+
+                        },
+                        AdultsNum: {
+                            title: 'AdultsNum',
+                            width: '5%',
+                           
+                        },
+                        GuestAddress: {
+                            title: 'GuestAddress',
+                            width: '20%'
+                        },
+                        TotalAmount: {
+                            title: 'Room TotalAmount',
+                            width: '5%'
+                        }
+
+                    }
+                });
+                $('#PersonRoomContainer').jtable('load');
+            });
+        </script>
+
+    </div>
+</body>
+</html>
